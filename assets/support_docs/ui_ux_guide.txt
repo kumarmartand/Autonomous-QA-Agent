@@ -1,0 +1,164 @@
+UI/UX Design Guide - E-Shop Checkout System
+============================================
+
+This document outlines the UI/UX guidelines and design requirements for the checkout system.
+
+COLOR SCHEME
+-----------
+- Primary Action Buttons: Green (#28a745)
+  - "Add to Cart" buttons
+  - "Pay Now" button
+  
+- Error Messages: Red (#dc3545)
+  - All validation error messages
+  - Invalid discount code messages
+  
+- Success Messages: Green background (#d4edda) with dark green text (#155724)
+  - Payment success message
+  - Valid discount code confirmation
+
+- Background: Gradient (purple/blue theme)
+- Container: White background with rounded corners
+
+FORM VALIDATION DISPLAY
+-----------------------
+- Error messages must be displayed in RED text
+- Error messages appear directly below the input field
+- Error messages use the class "error-message" with "show" class when visible
+- Error messages are hidden by default and shown when validation fails
+- Font size for error messages: 12px
+- Error messages should be clearly visible and readable
+
+REQUIRED FIELD INDICATORS
+-------------------------
+- Required fields are marked with a red asterisk (*)
+- Asterisk appears after the field label
+- Example: "Name *" or "Email *"
+
+BUTTON STYLING
+--------------
+- "Pay Now" button:
+  - Color: Green (#28a745)
+  - Full width of container
+  - Large padding (15px)
+  - Font size: 18px
+  - Font weight: Bold
+  - Rounded corners (5px border radius)
+  - Hover effect: Darker green (#218838)
+  - Disabled state: Gray (#6c757d) when form is invalid
+
+- "Add to Cart" buttons:
+  - Green background
+  - White text
+  - Standard padding (10px 20px)
+  - Rounded corners
+
+- "Apply" button (discount code):
+  - Blue background (#007bff)
+  - White text
+  - Hover: Darker blue (#0056b3)
+
+LAYOUT AND SPACING
+-----------------
+- Form sections should have clear visual separation
+- Adequate padding between form groups (20px margin-bottom)
+- Consistent spacing throughout the page
+- Cart section has light gray background (#f8f9fa)
+- Discount section has yellow/amber background (#fff3cd)
+
+INPUT FIELD STYLING
+-------------------
+- Input fields have:
+  - Border: 1px solid #ced4da
+  - Border radius: 4px
+  - Padding: 12px
+  - Font size: 14px
+  
+- Focus state:
+  - Border color changes to blue (#007bff)
+  - Box shadow appears (light blue glow)
+  - Outline: none (removes default browser outline)
+
+RADIO BUTTONS
+-------------
+- Shipping and payment methods use radio buttons
+- Radio buttons are displayed horizontally with spacing
+- Labels are clickable
+- Selected option is clearly indicated
+- Default selections:
+  - Shipping: Standard (checked)
+  - Payment: Credit Card (checked)
+
+SUCCESS MESSAGE DISPLAY
+-----------------------
+- Success message appears after successful payment
+- Background: Light green (#d4edda)
+- Text color: Dark green (#155724)
+- Padding: 15px
+- Border radius: 5px
+- Centered text alignment
+- Font size: 18px
+- Font weight: Bold
+- Hidden by default, shown with "show" class
+- Includes checkmark emoji: ✅
+
+DISCOUNT CODE SECTION
+---------------------
+- Background: Yellow/amber (#fff3cd)
+- Input and button displayed side by side
+- Success message for valid codes (green text)
+- Error message for invalid codes (red text)
+- Message appears below the input field
+
+CART SUMMARY
+------------
+- Background: Light gray (#e9ecef)
+- Clear separation of:
+  - Subtotal
+  - Discount (shown as negative)
+  - Shipping
+  - Total (bold, larger font, 24px)
+- Total row has top border for emphasis
+
+QUANTITY INPUTS
+---------------
+- Width: 60px
+- Centered text
+- Border: 1px solid #ced4da
+- Border radius: 4px
+- Minimum value: 0
+- Updates cart total automatically on change
+
+RESPONSIVE DESIGN
+----------------
+- Page should be usable on desktop and mobile devices
+- Container has maximum width (1200px)
+- Padding adjusts for smaller screens (20px on body)
+- Form elements stack appropriately on mobile
+
+ACCESSIBILITY
+-------------
+- All form fields have associated labels
+- Required fields are clearly marked
+- Error messages are associated with their respective fields
+- Buttons have clear, descriptive text
+- Color is not the only indicator (text labels also used)
+
+USER FEEDBACK
+-------------
+- Immediate visual feedback for:
+  - Form validation (on blur)
+  - Discount code application
+  - Cart quantity changes
+  - Shipping method selection
+- Clear success and error states
+- Smooth scrolling to success message after payment
+
+CONSISTENCY REQUIREMENTS
+------------------------
+- All error messages use the same red color
+- All success messages use the same green color scheme
+- Button styles are consistent across similar actions
+- Form inputs have uniform styling
+- Spacing and padding are consistent throughout
+

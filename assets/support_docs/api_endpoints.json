@@ -1,0 +1,205 @@
+{
+  "description": "API endpoints specification for E-Shop Checkout system backend integration",
+  "base_url": "https://api.eshop.com/v1",
+  "endpoints": {
+    "POST /apply_coupon": {
+      "description": "Apply a discount coupon code to the current cart",
+      "request": {
+        "body": {
+          "code": "string",
+          "cart_id": "string"
+        }
+      },
+      "response": {
+        "success": true,
+        "discount_percentage": 15,
+        "discount_amount": 29.99,
+        "message": "Discount code SAVE15 applied successfully"
+      },
+      "error_responses": {
+        "400": {
+          "success": false,
+          "message": "Invalid discount code"
+        },
+        "404": {
+          "success": false,
+          "message": "Cart not found"
+        }
+      },
+      "notes": "Valid codes: SAVE15 (15% discount)"
+    },
+    "POST /submit_order": {
+      "description": "Submit the checkout order with user details and payment information",
+      "request": {
+        "body": {
+          "name": "string",
+          "email": "string",
+          "address": "string",
+          "shipping_method": "standard|express",
+          "payment_method": "credit|paypal",
+          "cart_items": [
+            {
+              "item_id": "string",
+              "quantity": "integer",
+              "price": "number"
+            }
+          ],
+          "subtotal": "number",
+          "discount": "number",
+          "shipping_cost": "number",
+          "total": "number"
+        }
+      },
+      "response": {
+        "success": true,
+        "order_id": "ORD-12345",
+        "message": "Order submitted successfully",
+        "estimated_delivery": "2024-01-15"
+      },
+      "error_responses": {
+        "400": {
+          "success": false,
+          "message": "Validation failed",
+          "errors": [
+            {
+              "field": "email",
+              "message": "Invalid email format"
+            }
+          ]
+        },
+        "422": {
+          "success": false,
+          "message": "Required fields missing"
+        }
+      },
+      "validation_rules": {
+        "name": {
+          "required": true,
+          "min_length": 2,
+          "max_length": 100
+        },
+        "email": {
+          "required": true,
+          "format": "email",
+          "pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+        },
+        "address": {
+          "required": true,
+          "min_length": 10,
+          "max_length": 500
+        },
+        "shipping_method": {
+          "required": true,
+          "enum": ["standard", "express"]
+        },
+        "payment_method": {
+          "required": true,
+          "enum": ["credit", "paypal"]
+        }
+      }
+    },
+    "GET /cart": {
+      "description": "Retrieve current cart contents",
+      "response": {
+        "cart_id": "string",
+        "items": [
+          {
+            "item_id": "string",
+            "name": "string",
+            "quantity": "integer",
+            "price": "number",
+            "subtotal": "number"
+          }
+        ],
+        "subtotal": "number",
+        "discount": "number",
+        "shipping_cost": "number",
+        "total": "number"
+      }
+    },
+    "POST /cart/update_quantity": {
+      "description": "Update quantity of an item in the cart",
+      "request": {
+        "body": {
+          "item_id": "string",
+          "quantity": "integer"
+        }
+      },
+      "response": {
+        "success": true,
+        "cart": {
+          "subtotal": "number",
+          "total": "number"
+        }
+      }
+    },
+    "GET /shipping/calculate": {
+      "description": "Calculate shipping cost for a given method",
+      "request": {
+        "query_params": {
+          "method": "standard|express",
+          "cart_total": "number"
+        }
+      },
+      "response": {
+        "method": "standard|express",
+        "cost": "number",
+        "estimated_days": "integer"
+      },
+      "shipping_costs": {
+        "standard": {
+          "cost": 0.00,
+          "estimated_days": 5
+        },
+        "express": {
+          "cost": 10.00,
+          "estimated_days": 2
+        }
+      }
+    }
+  },
+  "discount_codes": {
+    "SAVE15": {
+      "discount_percentage": 15,
+      "description": "15% off on entire order",
+      "valid": true
+    }
+  },
+  "shipping_methods": {
+    "standard": {
+      "name": "Standard Shipping",
+      "cost": 0.00,
+      "estimated_days": 5,
+      "description": "Free standard shipping"
+    },
+    "express": {
+      "name": "Express Shipping",
+      "cost": 10.00,
+      "estimated_days": 2,
+      "description": "Fast express delivery"
+    }
+  },
+  "payment_methods": {
+    "credit": {
+      "name": "Credit Card",
+      "supported_cards": ["Visa", "MasterCard", "Amex"],
+      "description": "Pay with credit or debit card"
+    },
+    "paypal": {
+      "name": "PayPal",
+      "description": "Pay securely with PayPal account"
+    }
+  },
+  "validation": {
+    "email_pattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$",
+    "required_fields": ["name", "email", "address", "shipping_method", "payment_method"],
+    "error_messages": {
+      "name_required": "Name is required",
+      "email_required": "Email is required",
+      "email_invalid": "Please enter a valid email address",
+      "address_required": "Address is required",
+      "discount_invalid": "Invalid discount code"
+    }
+  }
+}
+
