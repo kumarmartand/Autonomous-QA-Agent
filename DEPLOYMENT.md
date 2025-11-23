@@ -52,10 +52,16 @@ git push -u origin main
 5. Configure:
    - **Main file path**: `ui/streamlit_app.py`
    - **Python version**: 3.8
-6. Add environment variable:
+6. **IMPORTANT**: Add environment variable:
    - **Key**: `API_BASE_URL`
-   - **Value**: Your backend URL (e.g., `https://your-app.railway.app`)
+   - **Value**: Your backend URL from Step 2 (e.g., `https://your-app.railway.app`)
+   - **Without this**, you'll see "API server is not running" error
 7. Deploy!
+
+**Note**: If you see "API server is not running", it means:
+- Backend is not deployed yet, OR
+- `API_BASE_URL` environment variable is not set in Streamlit Cloud
+- See `BACKEND_SETUP.md` for detailed troubleshooting
 
 ## 📝 Important Notes
 
