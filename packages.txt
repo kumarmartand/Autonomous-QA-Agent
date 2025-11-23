@@ -1,0 +1,6 @@
+# This file tells Streamlit Cloud to use requirements-streamlit.txt
+# instead of requirements.txt for the frontend deployment
+
+# Streamlit Cloud will use requirements-streamlit.txt if packages.txt exists
+# Otherwise, create a .streamlit/config.toml with the path
+

@@ -7,3 +7,7 @@ enableXsrfProtection = false
 [browser]
 gatherUsageStats = false
 
+[install]
+# Use minimal requirements for Streamlit frontend
+# Backend dependencies are not needed here
+

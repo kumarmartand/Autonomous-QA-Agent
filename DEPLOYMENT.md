@@ -21,14 +21,16 @@ git push -u origin main
 3. Click "New Project" → "Deploy from GitHub repo"
 4. Select your repository
 5. Railway will auto-detect Python
-6. Add environment variables:
+6. **Important**: Set build command to use backend requirements:
+   - Build Command: `pip install -r requirements-backend.txt`
+7. Add environment variables:
    ```
    LLM_PROVIDER=ollama
    LLM_MODEL=llama3.2
    LLM_BASE_URL=your_ollama_url
    ```
-7. Set start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-8. Deploy!
+8. Set start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+9. Deploy!
 
 **Option B: Render**
 1. Go to https://render.com

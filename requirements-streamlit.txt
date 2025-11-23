@@ -1,0 +1,6 @@
+# Minimal requirements for Streamlit frontend only
+# The frontend only needs to make HTTP requests to the backend API
+
+streamlit>=1.28.0
+requests>=2.31.0
+
