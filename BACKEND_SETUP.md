@@ -17,7 +17,8 @@ The Streamlit app needs the FastAPI backend to be running. Follow these steps:
 5. **Settings**:
    - **Root Directory**: Leave default (project root)
    - **Build Command**: `pip install -r requirements-backend.txt`
-   - **Start Command**: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+   - **Start Command**: `python -m uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+   - **OR** Railway will auto-detect from `Procfile` (already configured)
 6. **Environment Variables** (Add these):
    ```
    LLM_PROVIDER=ollama
